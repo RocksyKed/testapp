@@ -1,0 +1,50 @@
+@background-color: #452C36;
+@text-color: #C5B8BD;
+@text-color-h: #F0DFE6;
+
+.reset{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+header {
+
+  padding: 20px;
+
+  ul {
+    .reset;
+
+    text-align: center;
+    cursor: pointer;
+
+    li {
+      display: inline-block;
+
+      a {
+        font-family: 'Goudy Bookletter 1911', serif;
+        font-weight: 400;
+        font-size: 16px;
+        color: @text-color;
+        text-decoration: none;
+        padding: 10px;
+
+        &.active{
+          color: @text-color-h;
+          border-bottom: 2px solid @text-color-h;
+        }
+
+        &:hover {
+          color: @text-color-h;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-left: 50px;
+      }
+    }
+  }
+
+  background-color: @background-color;
+}

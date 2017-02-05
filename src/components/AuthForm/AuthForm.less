@@ -1,0 +1,56 @@
+@text-color: #3f3c3d;
+@color-button: #452C36;
+
+.font-style{
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.auth-form {
+  margin: 0 auto;
+  width: 600px;
+
+  form {
+
+    width: 300px;
+    margin: 40px auto 0 auto;
+    text-align: center;
+
+    input {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 8px 8px;
+      outline: none;
+      .font-style;
+      color: @text-color;
+      border: 1px solid #8a8586;
+      margin-bottom: 10px;
+      background-color: transparent;
+
+      &:focus {
+        border-color: @text-color;
+        box-shadow: 0 0 2px @text-color;
+        color: @text-color;
+      }
+    }
+
+    button {
+      padding: 8px;
+      width: 100%;
+      margin-top: 10px;
+      .font-style;
+      border: 1px solid @color-button;
+      outline: none;
+      background-color: transparent;
+      color: @color-button;
+      cursor: pointer;
+      &:hover {
+        background-color: @color-button;
+        color: #F0DFE6;
+      }
+    }
+  }
+
+}

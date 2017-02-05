@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { Header } from './components/Header/Header';
-import {  Footer } from './components/Footer/Footer';
 
 import './App.less';
 
@@ -11,7 +10,6 @@ class App extends Component {
       <div className="App">
          <Header />
           { this.props.children }
-         <Footer />
       </div>
     );
   }
