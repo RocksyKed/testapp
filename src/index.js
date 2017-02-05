@@ -4,11 +4,11 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './App';
 
-import { Main } from './components/Main';
-import { Auth } from './components/Auth';
-import { About } from './components/About';
+import { Main } from './components/Main/Main';
+import { Auth } from './components/Auth/Auth';
+import { About } from './components/About/About';
 
-import './index.css';
+import './index.less';
 
 ReactDOM.render(
   <Router history={ browserHistory }>
