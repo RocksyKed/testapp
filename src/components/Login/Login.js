@@ -2,22 +2,38 @@ import React from 'react';
 import http, { setHttpHeader } from '../../shared/axios';
 import basic from 'basic-authorization-header';
 import { apiPrefix } from '../../../etc/config.json';
+import { connect } from 'react-redux';
+import { setUserData, setAuthTrue, setAuthFalse, setMarkers } from '../../store/actions/actions';
+import { browserHistory } from 'react-router';
 
 import './Login.less';
 import { AuthForm } from '../AuthForm/AuthForm';
 
-export class Login extends React.Component {
+class Login extends React.Component {
+
+    resetFields() {
+        this.login.value = '';
+        this.password.value = '';
+    }
 
     onLogin = () => {
 
-        setHttpHeader(basic(this.login.value, this.password.value));
+        let authKey = basic(this.login.value, this.password.value);
+
+        setHttpHeader(authKey);
 
         http.get(`${apiPrefix}/login`)
-            .then(res => {
-                console.log(res);
+            .then(({ data }) => {
+                this.props.dispatch(setUserData(data._id, data.login));
+                this.props.dispatch(setAuthTrue());
+                this.props.dispatch(setMarkers(data.markers));
+                localStorage.setItem('Auth', authKey);
+                this.resetFields();
+                browserHistory.push('/');
             })
             .catch(err => {
-                console.log(err);
+                this.props.dispatch(setAuthFalse());
+                console.log('Failed auth');
             })
     };
 
@@ -36,3 +52,5 @@ export class Login extends React.Component {
         )
     }
 }
+
+export default connect()(Login);

@@ -7,6 +7,12 @@ const initialState = {
 export const map = (state = initialState, actions) => {
     switch (actions.type) {
 
+        case 'SET_MARKERS':
+            return {
+                ...state,
+                markers: actions.markers
+            };
+
         default:
             return state;
     }

@@ -8,7 +8,7 @@ import { createStore } from 'redux';
 import App from './App';
 
 import { Main } from './components/Main/Main';
-import { Login } from './components/Login/Login';
+import Login from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { About } from './components/About/About';
 import { mainReducer } from './store/redusers';
