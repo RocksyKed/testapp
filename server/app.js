@@ -44,6 +44,19 @@ app.get('/login', (req, res) => {
 
 });
 
+app.post('/save-markers', (req, res) => {
+
+    let { name } = auth(req);
+
+    db.saveMarkers(name, req.body.markers)
+        .then(user => {
+            res.send(user);
+        })
+        .catch(err => {
+           res.status(401).end();
+        });
+});
+
 const server = app.listen(serverPort, function() {
     console.log(`Server is up and running on port ${serverPort}`);
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import { connect } from 'react-redux';
-import { setAuthFalse } from '../../store/actions/actions';
+import { setUserData, setMarkers, setAuthFalse } from '../../store/actions/actions';
 
 import './Header.less';
 
@@ -9,6 +9,8 @@ const Header = (props) => {
 
     const onLogout = () => {
         props.dispatch(setAuthFalse());
+        props.dispatch(setUserData(null, null));
+        props.dispatch(setMarkers([]));
         localStorage.removeItem('Auth');
     };
 

@@ -1,8 +1,24 @@
-
+@color-button: #452C36;
 .main {
-  @font-color: #cacaca;
+  text-align: center;
 
-  color: @font-color;
+  button {
+    padding: 8px;
+    width: 250px;
+    margin-top: 10px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    border: 1px solid @color-button;
+    outline: none;
+    background-color: transparent;
+    color: @color-button;
+    cursor: pointer;
+    transition: all .6s;
 
-
+    &:hover {
+      background-color: @color-button;
+      color: #F0DFE6;
+    }
+  }
 }

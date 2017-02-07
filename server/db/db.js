@@ -21,3 +21,12 @@ export const findByLogin = (login) => {
 
     return User.findOne({ login });
 };
+
+export const saveMarkers = (login, markers) => {
+    return User.findOne({login})
+        .then(user => {
+            user.markers = markers;
+
+            return user.save();
+        })
+};
