@@ -16,3 +16,8 @@ export const createUser = ({ login, password }) => {
 
     return user.save();
 };
+
+export const findByLogin = (login) => {
+
+    return User.findOne({ login });
+};

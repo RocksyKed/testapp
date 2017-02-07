@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import * as db from './db/db';
+import auth from 'basic-auth';
 
+import * as db from './db/db';
 import { serverPort } from '../etc/config.json';
 
 // Initialization of express application
@@ -25,6 +26,22 @@ app.post('/register', (req, res) => {
        .catch(err => {
            res.status(401).send(err);
        });
+});
+
+app.get('/login', (req, res) => {
+    let { name, pass } = auth(req);
+
+    db.findByLogin(name)
+        .then(user => {
+            if(user.password !== pass) {
+                res.status(401).end();
+            } else {
+                res.send(user);
+            }
+        }).catch(err => {
+            res.status(404).end();
+        });
+
 });
 
 const server = app.listen(serverPort, function() {

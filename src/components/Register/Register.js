@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import http, { setHttpHeader } from '../../shared/axios';
 import basic from 'basic-authorization-header';
 import { apiPrefix } from '../../../etc/config.json';
 
@@ -14,14 +14,12 @@ export class Register extends React.Component {
             return console.log('Passwords aren\'t the same');
         }
 
-        // Set header for request
-        axios.defaults.headers.common['Authorization'] = basic(this.login.value, this.password.value);
-
-        axios.post(`${apiPrefix}/register`, {
+        http.post(`${apiPrefix}/register`, {
             login: this.login.value,
             password: this.password.value
         })
             .then(res => {
+                setHttpHeader(basic(this.login.value, this.password.value));
                 console.log(res);
             })
             .catch(err => {
@@ -31,7 +29,7 @@ export class Register extends React.Component {
 
     render() {
         return (
-            <div className="login">
+            <div className="register">
                 <AuthForm onSubmit={ this.onRegister }>
                     <input type="text"
                            ref={ (input) => { this.login = input }}
