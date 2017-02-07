@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import http, { setHttpHeader } from './shared/axios';
 import { apiPrefix } from '../etc/config.json';
+import { connect } from 'react-redux';
 import { setUserData, setAuthTrue, setAuthFalse, setMarkers } from './store/actions/actions';
 
 import Header from './components/Header/Header';
@@ -38,4 +39,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
