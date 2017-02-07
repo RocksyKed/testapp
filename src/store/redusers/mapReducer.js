@@ -4,13 +4,22 @@ const initialState = {
     markers: []
 };
 
-export const map = (state = initialState, actions) => {
-    switch (actions.type) {
+export const map = (state = initialState, action) => {
+    switch (action.type) {
 
         case 'SET_MARKERS':
             return {
                 ...state,
-                markers: actions.markers
+                markers: action.markers
+            };
+
+        case 'SET_MARKER':
+            return {
+                ...state,
+                markers: [
+                    ...state.markers,
+                    action.marker
+                ]
             };
 
         default:

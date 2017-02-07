@@ -16,3 +16,8 @@ export const setMarkers = (markers) => ({
     type: 'SET_MARKERS',
     markers
 });
+
+export const setMarker = (marker) => ({
+    type: 'SET_MARKER',
+    marker
+});
